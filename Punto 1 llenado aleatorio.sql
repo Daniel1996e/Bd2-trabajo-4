@@ -19,7 +19,7 @@ BEGIN
         ELSE
             g:='f';
         END IF;
-        s:=d*750000;
+        s:=dbms_random.value(4000,10000);
         
         INSERT INTO empleado VALUES(i,s,d,g);
 
