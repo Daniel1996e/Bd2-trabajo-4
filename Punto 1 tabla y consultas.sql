@@ -1,5 +1,5 @@
 -- Tabla --
-
+Drop table empleado;
 CREATE TABLE empleado(
 codigo NUMBER(8) PRIMARY KEY, 
 salario NUMBER(8) NOT NULL, 
@@ -9,9 +9,7 @@ sexo CHAR(1) NOT NULL CHECK(sexo = 'm' OR sexo = 'f'));
 --consultas--
 --a) Consulta propuesta por Godzilla:--
 
-SELECT e.*,
-               SUM(salario) OVER (PARTITION BY depto, sexo) AS ts,
-               SUM(salario) OVER (PARTITION BY depto) AS tsd
+SELECT e.*, SUM(salario) OVER (PARTITION BY depto, sexo) AS ts, SUM(salario) OVER (PARTITION BY depto) AS tsd
 FROM empleado e;
 
 --b) Consulta propuesta por King Kong:--
